@@ -1,6 +1,5 @@
 # Amazon Referral Bot 🤖
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D14-blue.svg)](https://nodejs.org/)
 [![Telegram Bot](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://core.telegram.org/bots)
 
@@ -37,18 +36,3 @@ A powerful Telegram bot that transforms Amazon product links into affiliate refe
 | Deployment        | Vercel/Serverless               |
 | Environment       | Node.js v14+                   |
 | License           | MIT                             |
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- Telegram bot token from [@BotFather](https://t.me/BotFather)
-
-### Installation
-
-1. Clone the repository
-```bash
-git clone https://github.com/yourusername/amazon-ref-bot.git
-cd amazon-ref-bot
-```
