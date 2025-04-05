@@ -1,59 +1,54 @@
-# Amazon Referral Telegram Bot
+# Amazon Referral Bot 🤖
 
-A Telegram bot that automatically adds referral IDs to Amazon links. The bot can process both full URLs and short URLs, and works in both private chats and groups.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D14-blue.svg)](https://nodejs.org/)
+[![Telegram Bot](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://core.telegram.org/bots)
 
-## Features
+A powerful Telegram bot that transforms Amazon product links into affiliate referral links with advanced features and smart URL handling.
 
-- Processes Amazon links (both full URLs and short URLs)
-- Adds custom referral ID to Amazon links
-- Works with `/link` command in both private and group chats
-- Serverless deployment on Vercel
+## 🌟 Features
 
-## Setup
+- **Smart URL Handling**  
+  Processes both full Amazon URLs and shortened links (amzn.to)
+  
+- **Multi-Affiliate Support**  
+  Randomly selects from multiple affiliate IDs for each conversion
 
-1. Clone this repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env` file based on `.env.example`:
-   - Get a bot token from [@BotFather](https://t.me/BotFather)
-   - Add the token to your `.env` file
+- **Seamless Integration**  
+  Works in both private chats and group conversations
 
-## Development
+- **Advanced URL Parsing**  
+  Automatically extracts product IDs from complex URLs
 
-Run the bot locally:
+- **Error Handling**  
+  Provides clear error messages for invalid or unsupported URLs
+
+- **Serverless Ready**  
+  Designed for easy deployment on serverless platforms
+
+## 🛠️ Technical Specifications
+
+| Category          | Details                          |
+|-------------------|----------------------------------|
+| Language          | JavaScript (Node.js)            |
+| Framework         | Telegraf.js                     |
+| URL Parsing       | Regular Expressions             |
+| HTTP Client       | node-fetch                      |
+| Deployment        | Vercel/Serverless               |
+| Environment       | Node.js v14+                   |
+| License           | MIT                             |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- Telegram bot token from [@BotFather](https://t.me/BotFather)
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
+git clone https://github.com/yourusername/amazon-ref-bot.git
+cd amazon-ref-bot
 ```
-
-## Deployment
-
-1. Create a Vercel account if you haven't already
-2. Install Vercel CLI:
-   ```bash
-   npm i -g vercel
-   ```
-3. Deploy to Vercel:
-   ```bash
-   vercel
-   ```
-4. Set up your bot's webhook URL:
-   ```
-   https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=<VERCEL_URL>/api/webhook
-   ```
-
-## Usage
-
-- Send any Amazon link directly to the bot
-- Use the `/link` command followed by an Amazon URL
-- Add the bot to a group and use the `/link` command there
-
-## Environment Variables
-
-- `BOT_TOKEN`: Your Telegram bot token from @BotFather
-- `NODE_ENV`: Set to 'development' for local testing, 'production' for deployment
-
-## License
-
-ISC
