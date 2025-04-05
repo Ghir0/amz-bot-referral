@@ -68,17 +68,21 @@ bot.catch((err, ctx) => {
 module.exports = async (req, res) => {
   try {
     if (req.method === 'POST') {
+      // Ensure proper JSON parsing
+      if (typeof req.body === 'string') {
+        req.body = JSON.parse(req.body);
+      }
       await bot.handleUpdate(req.body, res);
-    } else {
-      res.status(200).send('Bot is running');
+      return res.status(200).send('OK');
     }
+    res.status(200).send('Bot is running');
   } catch (error) {
     console.error('Error in serverless function:', error);
     res.status(500).send('Internal Server Error');
   }
 };
 
-// For local development
+// Remove local development launch since we're in production
 if (process.env.NODE_ENV === 'development') {
   bot.launch();
 }
