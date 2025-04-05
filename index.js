@@ -64,12 +64,21 @@ bot.catch((err, ctx) => {
   ctx.reply('Sorry, something went wrong while processing your request.');
 });
 
+// For serverless deployment
+module.exports = async (req, res) => {
+  try {
+    if (req.method === 'POST') {
+      await bot.handleUpdate(req.body, res);
+    } else {
+      res.status(200).send('Bot is running');
+    }
+  } catch (error) {
+    console.error('Error in serverless function:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
 // For local development
 if (process.env.NODE_ENV === 'development') {
   bot.launch();
 }
-
-// Export for serverless deployment
-module.exports = {
-  bot: bot.webhookCallback('/api/webhook')
-};
