@@ -72,8 +72,24 @@ module.exports = async (req, res) => {
       if (typeof req.body === 'string') {
         req.body = JSON.parse(req.body);
       }
-      await bot.handleUpdate(req.body, res);
-      return res.status(200).send('OK');
+      
+      // Create a response object that Telegraf can write to
+      const response = {
+        status: (code) => {
+          res.statusCode = code;
+          return response;
+        },
+        setHeader: (name, value) => {
+          res.setHeader(name, value);
+          return response;
+        },
+        end: (chunk) => {
+          res.end(chunk);
+        }
+      };
+      
+      await bot.handleUpdate(req.body, response);
+      return;
     }
     res.status(200).send('Bot is running');
   } catch (error) {
@@ -81,8 +97,3 @@ module.exports = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
-
-// Remove local development launch since we're in production
-if (process.env.NODE_ENV === 'development') {
-  bot.launch();
-}
